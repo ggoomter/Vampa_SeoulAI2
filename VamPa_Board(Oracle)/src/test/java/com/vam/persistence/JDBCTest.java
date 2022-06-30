@@ -18,7 +18,7 @@ public class JDBCTest {
     public void testConnection() { 
         try(Connection con = DriverManager.getConnection( 
                 "jdbc:oracle:thin:@localhost:1521:orcl", 
-                "SYS", //SYSTEM
+                "SYSTEM", 
                 "system123")){ 
             System.out.println(con); 
         } catch (Exception e) { 
