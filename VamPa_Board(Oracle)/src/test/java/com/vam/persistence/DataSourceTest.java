@@ -23,10 +23,10 @@ public class DataSourceTest {
 
 	@Test
 	public void testConnection() {
-		try (
+		try {
 			Connection con = dataSource.getConnection();
 			SqlSession session = sqlSessionFactory.openSession();
-		) {
+		 
 			System.out.println("con = " + con);
 			System.out.println("session = " + session);
 		} catch (Exception e) {
