@@ -20,7 +20,7 @@ public class JDBCTest {
     	//given(필요한 데이터 준비)
     	String url = "jdbc:oracle:thin:@localhost:1521:orcl";
     	String id = "ggoomter";
-    	String password = "0070";
+    	String password = "0070"; 
     	
     	//when실행
         try(Connection con = DriverManager.getConnection( 
