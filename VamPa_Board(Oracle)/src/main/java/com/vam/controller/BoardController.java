@@ -12,12 +12,20 @@ public class BoardController {
 	private static final Logger log = LoggerFactory.getLogger(BoardController.class);
 	
 	@GetMapping("/list")
-	public void boardListGET() {
+	public String boardListGET() {
 		log.info("게시판 목록 페이지 진입");
+		return "list";
+		/* /WEB-INF/views/list.jsp */
 	}
 	
 	@GetMapping("/enroll")
 	public void boardEnrollGET() {
 		log.info("게시판 등록 페이지 진입");
+	}
+	
+	@GetMapping("/custom")
+	public String boardCustomGET() {
+		log.info("커스덤 페이지 진입");
+		return "board/custom";	//void
 	}
 }
