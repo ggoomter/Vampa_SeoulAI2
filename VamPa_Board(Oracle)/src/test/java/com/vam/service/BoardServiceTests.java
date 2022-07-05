@@ -33,12 +33,17 @@ public class BoardServiceTests {
         //매핑되어있는 BoardMapper.xml의 id가 enroll인 쿼리가 실행된다.
     }
     
-    /* 게시판 목록 테스트 */
+    /* 게시글 목록 테스트 */
     @Test
     public void testGetList() {
-        
         service.getList().forEach(board -> log.info("" + board));        
-        
+    }
+    
+    /*게시글 상세 조회*/
+    @Test
+    public void testGETPage() {
+        int bno = 24;
+        log.info("" + service.getPage(bno));
     }
  
 }

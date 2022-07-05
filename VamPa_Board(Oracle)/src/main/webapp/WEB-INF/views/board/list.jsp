@@ -75,15 +75,20 @@
 			<c:forEach items="${list}" var="list">
 	            <tr>
 	                <td><c:out value="${list.bno}"/></td>
-	                <td><c:out value="${list.title}"/></td>
+	                <td>
+		                <a class="move" href='<c:out value="${list.bno}"/>'>
+					    	<c:out value="${list.title}"/>
+					    </a>
+				    </td>
 	                <td><c:out value="${list.writer}"/></td>
 	                <td><fmt:formatDate pattern="yyyy/MM/dd" value="${list.regdate}"/></td>
                 	<td><fmt:formatDate pattern="yyyy/MM/dd" value="${list.updateDate}"/></td>
 	            </tr>
 	        </c:forEach>
 		</table>
+		<form id="moveForm" method="get">    
+    	</form>
 	</div>
-	<a href="/board/enroll">게시판 등록</a>
 	
 	<script>
     $(document).ready(function(){
@@ -91,18 +96,27 @@
     	let result = '<c:out value="${result}"/>';
     	checkAlert(result);
     	
-    	 function checkAlert(result){
-    	        
-    	        if(result === ''){
-    	            return;
-    	        }
-    	        
-    	        else if(result === "enrol success"){
-    	            alert("등록이 완료되었습니다.");
-    	        }
-    	        
-    	    }  
+    	function checkAlert(result){
+   	        if(result === ''){
+   	            return;
+   	        }
+   	        
+   	        else if(result === "enrol success"){
+   	            alert("등록이 완료되었습니다.");
+   	        }
+   	    } 
+ 
     });
+    
+    let moveForm = $("#moveForm");
+ 	    
+	$(".move").on("click", function(e){
+		e.preventDefault();	//이벤트 버블링 막기. 자식의 이벤트를 부모에서도 인식해서 실행. 이벤트를 부모에서 실행하지 않도록
+ 	        
+ 	    moveForm.append("<input type='hidden' name='bno' value='"+ $(this).attr("href")+ "'>");
+ 	    moveForm.attr("action", "/board/get");
+ 	    moveForm.submit();
+ 	});
  
 </script>
 </body>
