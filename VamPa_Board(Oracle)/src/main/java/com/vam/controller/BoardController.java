@@ -25,7 +25,7 @@ public class BoardController {
 	public String boardListGET(Model model) {
 		log.info("게시판 목록 페이지 진입");
 		model.addAttribute("list", bservice.getList());
-		return "board/list";
+		return "/board/list";
 		/* /WEB-INF/views/board/list.jsp */
 	}
 	
@@ -52,8 +52,12 @@ public class BoardController {
     }
     
     /* 게시글 상세조회 */
+    /* GET요청은 페이지이동이 거듭되는동안 이전페이지들의 요청정보를 기억하고 있어야 한다.
+     * URL에 파라미터가 누적되어 전달되는데 이런 기법을 URL Rewrite처리라고 한다.*/
     @GetMapping("/get")
     public void boardGetPageGET(int bno, Model model) {
+    	System.out.println("컨트롤러의 boardGetPageGET에서 파악하고있는 bno : "+bno);
+    	System.out.println("컨트롤러의 boardGetPageGET에서 파악하고있는 model : "+model);
         model.addAttribute("pageInfo", bservice.getPage(bno));
         
     }
