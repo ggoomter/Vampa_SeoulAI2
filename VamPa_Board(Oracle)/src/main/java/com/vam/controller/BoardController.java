@@ -46,7 +46,7 @@ public class BoardController {
         
         log.info("BoardVO : " + board);
         bservice.enroll(board);
-        rttr.addFlashAttribute("result", "enrol success");
+        rttr.addFlashAttribute("result", "enroll success");
         return "redirect:/board/list";
         
     }
@@ -59,6 +59,23 @@ public class BoardController {
     	System.out.println("컨트롤러의 boardGetPageGET에서 파악하고있는 bno : "+bno);
     	System.out.println("컨트롤러의 boardGetPageGET에서 파악하고있는 model : "+model);
         model.addAttribute("pageInfo", bservice.getPage(bno));
+    }
+    
+    /* 수정 페이지 이동 */
+    @GetMapping("/modify")
+    public void boardModifyGET(int bno, Model model) {
+        model.addAttribute("pageInfo", bservice.getPage(bno));
+    }
+    
+    /* 페이지 수정 기능 */
+    @PostMapping("/modify")
+    public String boardModifyPOST(BoardVO board, RedirectAttributes rttr) {
+        
+        bservice.modify(board);
+        
+        rttr.addFlashAttribute("result", "modify success");
+        
+        return "redirect:/board/list";
         
     }
 }
