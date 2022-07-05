@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,8 +22,9 @@ public class BoardController {
     private BoardService bservice;
 	
 	@GetMapping("/list")
-	public String boardListGET() {
+	public String boardListGET(Model model) {
 		log.info("게시판 목록 페이지 진입");
+		model.addAttribute("list", bservice.getList());
 		return "board/list";
 		/* /WEB-INF/views/board/list.jsp */
 	}
