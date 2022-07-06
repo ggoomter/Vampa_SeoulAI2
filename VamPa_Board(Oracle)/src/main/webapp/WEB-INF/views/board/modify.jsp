@@ -50,6 +50,10 @@ textarea{
 	padding-left : 80px;
 	margin-top : 50px;
 }
+
+#delete_btn{
+	background-color : #f3e3e7;
+}
 </style>
 </head>
 
