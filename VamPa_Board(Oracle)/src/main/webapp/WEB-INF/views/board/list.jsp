@@ -103,10 +103,12 @@ thead {
       <!-- 페이징영역 -->
       <div class="pageInfo_wrap" >
       	  <div class="pageInfo_area">
+      	  	<ul id="pageInfo" class="pageInfo">
                 <!-- 각 번호 페이지 버튼 -->
                 <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
                     <li class="pageInfo_btn"><a href="${num}">${num}</a></li>
                 </c:forEach>
+            </ul>
       	  </div>
   	  </div>
       
@@ -155,6 +157,17 @@ thead {
         moveForm.append("<input type='hidden' name='bno' value='"+ $(this).attr("href")+ "'>");
         moveForm.attr("action", "/board/get");
         moveForm.submit();
+    });
+    
+    //페이지 이동
+	$(".pageInfo a").on("click", function(e){
+		e.preventDefault();
+		//name이 pageNum인 input태그의 값에다가    그놈의 href값으로 대입
+        moveForm.find("input[name='pageNum']").val($(this).attr("href"));
+        
+        moveForm.attr("action", "/board/list");	//action속성 추가
+        moveForm.submit();
+        
     });
  
 </script>
