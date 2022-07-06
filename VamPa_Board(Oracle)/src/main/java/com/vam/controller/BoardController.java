@@ -67,15 +67,19 @@ public class BoardController {
         model.addAttribute("pageInfo", bservice.getPage(bno));
     }
     
-    /* 페이지 수정 기능 */
+    /* 글 수정 기능 */
     @PostMapping("/modify")
     public String boardModifyPOST(BoardVO board, RedirectAttributes rttr) {
-        
         bservice.modify(board);
-        
         rttr.addFlashAttribute("result", "modify success");
-        
         return "redirect:/board/list";
-        
+    }
+    
+    /* 글 삭제 기능 */
+    @PostMapping("/delete")
+    public String boardDeletePOST(int bno, RedirectAttributes rttr) {
+        bservice.delete(bno);
+        rttr.addFlashAttribute("result", "delete success");
+        return "redirect:/board/list";
     }
 }

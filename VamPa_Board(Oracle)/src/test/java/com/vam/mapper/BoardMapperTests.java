@@ -73,5 +73,13 @@ public class BoardMapperTests {
     	log.info("junit수정결과 : "+result);
     }
      
+    
+    /* 게시판 삭제 */
+    @Test
+    public void testDelete() {
+        int result = mapper.delete(23);
+        log.info("result : " + result);
+        
+    }
  
 }

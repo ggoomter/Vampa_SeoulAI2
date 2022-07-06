@@ -83,6 +83,7 @@ textarea{
 		<div class="btn_wrap">
 			<a class="btn" id="list_btn">목록 페이지</a> 
 	        <a class="btn" id="modify_btn">수정 완료</a>
+	        <a class="btn" id="delete_btn">삭제</a>
 	        <a class="btn" id="cancel_btn">수정 취소</a>
 		</div>
 	</form>	
@@ -112,7 +113,14 @@ textarea{
     $("#cancel_btn").on("click", function(e){
         form.attr("action", "/board/get");	//수정화면에서 상세보기로 이동
         form.submit();
-    }); 
+    });
+	
+	/* 수정 하기 버튼 */
+	$("#delete_btn").on("click", function(e){
+		form.attr("action", "/board/delete");
+		form.attr("method", "post");
+		form.submit();	//화면에서 수정한 input데이터들 날리기
+	});	
 </script>	
 </body>
 </html>
