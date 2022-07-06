@@ -81,6 +81,10 @@ thead {
  a:link {color:black; text-decoration: none;}
  a:visited {color:black; text-decoration: none;}
  a:hover {color:black; text-decoration: underline;}
+ 
+.active{
+    background-color: #cdd5ec;
+}
 </style>
 
 </head>
@@ -128,7 +132,8 @@ thead {
                 
                 <!-- 각 번호 페이지 버튼 -->
                 <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-                    <li class="pageInfo_btn"><a href="${num}">${num}</a></li>
+                    <li class="pageInfo_btn ${pageMaker.cri.pageNum == num ? "active":"" }"><a href="${num}">${num}</a></li>
+                    <!-- 컨트롤러에서 전달된 페이지 번호가   현재 반복문을 돌다가 나온 페이지 번호이면 active라는 클래스 동적추가 -->
                 </c:forEach>
                 
                 <!-- 다음페이지 버튼 -->
