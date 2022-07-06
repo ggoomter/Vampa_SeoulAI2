@@ -99,7 +99,21 @@ thead {
             </tr>
          </c:forEach>
       </table>
-      <form id="moveForm" method="get"></form>
+      
+      <!-- 페이징영역 -->
+      <div class="pageInfo_wrap" >
+      	  <div class="pageInfo_area">
+                <!-- 각 번호 페이지 버튼 -->
+                <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+                    <li class="pageInfo_btn"><a href="${num}">${num}</a></li>
+                </c:forEach>
+      	  </div>
+  	  </div>
+      
+      <form id="moveForm" method="get">
+      	  <input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
+          <input type="hidden" name="amount"  value="${pageMaker.cri.amount }">
+      </form>
    </div>
 
    <script>

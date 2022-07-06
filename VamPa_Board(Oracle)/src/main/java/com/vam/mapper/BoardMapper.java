@@ -28,4 +28,8 @@ public interface BoardMapper {
     //그 전달된 참조형변수를 이 함수안에서는 cri라는 이름으로 쓸거다.
     //이함수가 실행되고나면 BoardVO로 구성된 리스트를 반환할거다.
     //위의 함수정의에 대한 약속.
+    
+
+    /* 게시글 총 갯수 */
+    public int getTotal();
 }

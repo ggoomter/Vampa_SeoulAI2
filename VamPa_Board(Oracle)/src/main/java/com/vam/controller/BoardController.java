@@ -12,6 +12,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.vam.model.BoardVO;
 import com.vam.model.Criteria;
+import com.vam.model.PageMakerDTO;
 import com.vam.service.BoardService;
 
 @Controller
@@ -26,6 +27,9 @@ public class BoardController {
 	public String boardListGET(Model model, Criteria cri) {
 		log.info("게시판 목록 페이지 진입");
 		model.addAttribute("list", bservice.getListPaging(cri));
+		int total = bservice.getTotal();
+		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
+		model.addAttribute("pageMaker", pageMake);
 		return "/board/list";
 		/* /WEB-INF/views/board/list.jsp */
 	}
