@@ -25,6 +25,8 @@ public class BoardController {
 	
 	@GetMapping("/list")
 	public String boardListGET(Model model, Criteria cri) {
+		//화면에서 넘어온 name과 controller에서 쓰는 변수의 이름이 카멜케이스로 변환한것이 같으면 자동매핑
+		//Criteria에는 pageNum이 있고, get.jsp 에는 bno가 있음
 		log.info("게시판 목록 페이지 진입");
 		model.addAttribute("list", bservice.getListPaging(cri));
 		int total = bservice.getTotal();
@@ -60,10 +62,11 @@ public class BoardController {
     /* GET요청은 페이지이동이 거듭되는동안 이전페이지들의 요청정보를 기억하고 있어야 한다.
      * URL에 파라미터가 누적되어 전달되는데 이런 기법을 URL Rewrite처리라고 한다.*/
     @GetMapping("/get")
-    public void boardGetPageGET(int bno, Model model) {
+    public void boardGetPageGET(int bno, Model model, Criteria cri) {
     	System.out.println("컨트롤러의 boardGetPageGET에서 파악하고있는 bno : "+bno);
     	System.out.println("컨트롤러의 boardGetPageGET에서 파악하고있는 model : "+model);
         model.addAttribute("pageInfo", bservice.getPage(bno));
+        model.addAttribute("cri", cri);
     }
     
     /* 수정 페이지 이동 */
