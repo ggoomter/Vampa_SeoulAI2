@@ -33,6 +33,8 @@ public class BoardServiceTests {
     @Test
     public void testChangePW() {
     	//1. given   : change함수를 쓸수잇는 객체는 준비되어있어야 한다.
+    	//현재는 junit이기때문에 단위테스트이기 때문에 외부에서 주입받을수없어서 new로 생성해주는데
+    	//실제프로젝트에서는 외부에서 주입받아야 한다.
     	비번변경인터페이스 = new 비번알때비번으로();
     				// new 비번모를때인증으로();
     	
