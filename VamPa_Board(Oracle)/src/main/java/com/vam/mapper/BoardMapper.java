@@ -31,5 +31,5 @@ public interface BoardMapper {
     
 
     /* 게시글 총 갯수 */
-    public int getTotal();
+    public int getTotal(Criteria cri);
 }

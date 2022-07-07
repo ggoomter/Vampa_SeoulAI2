@@ -29,7 +29,7 @@ public class BoardController {
 		//Criteria에는 pageNum이 있고, get.jsp 에는 bno가 있음
 		log.info("게시판 목록 페이지 진입");
 		model.addAttribute("list", bservice.getListPaging(cri));
-		int total = bservice.getTotal();
+		int total = bservice.getTotal(cri);
 		PageMakerDTO pageMake = new PageMakerDTO(cri, total);
 		model.addAttribute("pageMaker", pageMake);
 		return "/board/list";
